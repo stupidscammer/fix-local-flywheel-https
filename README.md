@@ -20,3 +20,6 @@ See https://local.getflywheel.com/community/t/wp-cron-not-working-on-secured-sit
 
 ## Credits
 Thanks to Local user [Xaver](https://local.getflywheel.com/community/users/xaver/summary) for the initial `cron_request` filter code.
+
+## License
+This plugin is licensed [GPLv2+](LICENSE). Original code from Local forums is licensed [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US) and has been modified for use in this plugin. See [Local Community TOS](https://local.getflywheel.com/community#3) for details.
