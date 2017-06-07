@@ -9,3 +9,11 @@ See https://local.getflywheel.com/community/t/wp-cron-not-working-on-secured-sit
 ## Installation
 1. Clone the repo locally and copy or symlink the file into your site's `wp-content\mu-plugins` directory.
 2. You can also pull the file in directly with `curl` or `wget`, or just copy and paste into your own plugin or theme file.
+
+### wget
+    cd wp-content/mu-plugins
+    wget https://git.io/vH6Nn
+
+### cURL
+    cd wp-content/mu-plugins
+    curl -o fix-local-flywheel-https.php -L -C - https://git.io/vH6Nn
