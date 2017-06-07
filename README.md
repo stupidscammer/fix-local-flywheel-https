@@ -17,3 +17,6 @@ See https://local.getflywheel.com/community/t/wp-cron-not-working-on-secured-sit
 ### cURL
     cd wp-content/mu-plugins
     curl -o fix-local-flywheel-https.php -L -C - https://git.io/vH6Nn
+
+## Credits
+Thanks to Local user [Xaver](https://local.getflywheel.com/community/users/xaver/summary) for the initial `cron_request` filter code.
