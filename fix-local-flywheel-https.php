@@ -3,7 +3,7 @@
 Plugin Name: Fix Local SSL Requests
 Plugin URI: https://local.getflywheel.com/community/t/wp-cron-not-working-on-secured-sites/147/2
 Description: Makes WordPress URLs non-secure for certain SSL requests.
-Version: 1.0.0
+Version: 1.1.0
 Author: Morgan Estes
 Author URI: https://morganestes.com
 License: GPLv2 or later
@@ -70,3 +70,25 @@ function make_cron_url_http( $cron_request_array, $doing_wp_cron ) {
 }
 
 add_filter( 'cron_request', __NAMESPACE__ . '\\make_cron_url_http', 10, 2 );
+
+/**
+ * Filter the admin URL for in-network requests between sites.
+ *
+ * @since 1.1.0
+ *
+ * @param string   $url     The complete admin area URL including scheme and path.
+ * @param string   $path    Path relative to the admin area URL. Blank string if no path is specified.
+ * @param int|null $blog_id Site ID, or null for the current site.
+ * @return string The filtered admin_url.
+ */
+function fix_network_upgrades( $url, $path, $blog_id ) {
+	if ( is_multisite() && is_ssl() ) {
+		if ( SITE_ID_CURRENT_SITE !== $blog_id && 'upgrade.php?step=upgrade_db' === $path ) {
+			$url = set_url_scheme( $url, 'http' );
+		}
+	}
+
+	return $url;
+}
+
+add_filter( 'admin_url', __NAMESPACE__ . '\\fix_network_upgrades', 10, 3 );
